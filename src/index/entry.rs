@@ -145,11 +145,11 @@ impl Entry for SatRange {
   }
 }
 
-impl Entry for u64 {
+impl Entry for i64 {
   type Value = [u8; 8];
 
   fn load([b0, b1, b2, b3, b4, b5, b6, b7]: Self::Value) -> Self {
-    u64::from_le_bytes([b0, b1, b2, b3, b4, b5, b6, b7])
+    i64::from_le_bytes([b0, b1, b2, b3, b4, b5, b6, b7])
   }
 
   fn store(self) -> Self::Value {

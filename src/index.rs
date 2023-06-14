@@ -649,7 +649,7 @@ impl Index {
 
     if let Some(value) = address_to_inscription_numbers.get(address.to_string().as_str())? {
       for chunk in value.value().chunks_exact(8) {
-        let number = u64::load(chunk.try_into().unwrap());
+        let number = i64::load(chunk.try_into().unwrap());
         inscription_ids.push(
           self
             .get_inscription_id_by_inscription_number(number)?
