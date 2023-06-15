@@ -1096,7 +1096,9 @@ impl Server {
         "sat": entry.sat,
         "location": satpoint,
         "output": satpoint.outpoint,
-        "output_value": op.unwrap().value,
+        "output_value": op.is_some().then(|| {
+          op.unwrap().value
+        }),
         "offset": satpoint.offset,
         "timestamp": timestamp(entry.timestamp).to_string(),
         "_links": {
