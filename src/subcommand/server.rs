@@ -1079,6 +1079,7 @@ impl Server {
     };
 
     let next = index.get_inscription_id_by_inscription_number(entry.number + 1)?;
+    let op = output.clone();
 
     Ok(if accept_json.0 {
       axum::Json(serde_json::json!({
@@ -1095,6 +1096,7 @@ impl Server {
         "sat": entry.sat,
         "location": satpoint,
         "output": satpoint.outpoint,
+        "output_value": op.unwrap().value,
         "offset": satpoint.offset,
         "timestamp": timestamp(entry.timestamp).to_string(),
         "_links": {
